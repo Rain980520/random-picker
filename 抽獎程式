@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名大墩1000粉紀念週邊抽獎</title> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 15px
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 15px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #008061;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>匿名大墩1000粉紀念週邊抽獎</h1>
+    <input type="text" id="nameInput" placeholder="輸入人名 (用逗號分隔)">
+    <button onclick="draw()">抽選</button>
+
+    <div id="result"></div>
+
+    <script>
+        function draw() {
+            const input = document.getElementById("nameInput").value;
+            const names = input.split(',').map(name => name.trim()).filter(name => name);
+            if (names.length === 0) {
+                document.getElementById("result").innerText = "請輸入至少一個人名！";
+                return;
+            }
+            const randomIndex = Math.floor(Math.random() * names.length);
+            const winner = names[randomIndex];
+            document.getElementById("result").innerText = `恭喜 ${winner}！獲得杯套*1`;
+        }
+    </script>
+
+</body>
+</html>
